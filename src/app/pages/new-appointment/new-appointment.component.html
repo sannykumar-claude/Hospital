@@ -1,0 +1,64 @@
+
+<div>
+    <form [formGroup]="patientForm" (ngSubmit)="onSubmit()" class="patient-form">
+        <h2>New Appointment</h2>
+        <div  class="form-row">
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input id="name" formControlName="name" class="form-control">
+          <div *ngIf="submitted && patientForm.get('name')!.invalid" class="error">
+            <small>Name is required.</small>
+          </div>
+        </div>
+      
+        <div class="form-group">
+          <label for="age">Age:</label>
+          <input id="age" type="number" formControlName="age" class="form-control">
+          <div *ngIf="submitted && patientForm.get('age')!.invalid" class="error">
+            <small>Age is required and must be a positive number.</small>
+          </div>
+        </div>
+      
+        <div class="form-group">
+          <label for="gender">Gender:</label>
+          <select id="gender" formControlName="gender" class="form-control">
+            <option value="">Select</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+          </select>
+          <div *ngIf="submitted && patientForm.get('gender')!.invalid" class="error">
+            <small>Gender is required.</small>
+          </div>
+        </div>
+      
+        <div class="form-group">
+          <label for="address">Address:</label>
+          <textarea id="address" formControlName="address" class="form-control"></textarea>
+          <div *ngIf=" submitted && patientForm.get('address')!.invalid" class="error">
+            <small>Address is required.</small>
+          </div>
+        </div>
+      
+        <div class="form-group">
+          <label for="phone">Phone:</label>
+          <input id="phone" formControlName="phone" class="form-control">
+          <div *ngIf="submitted && patientForm.get('phone')!.invalid" class="error">
+            <small>Phone number is required and must be 10 digits.</small>
+          </div>
+        </div>
+      
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input id="email" formControlName="email" class="form-control">
+          <div *ngIf="submitted && patientForm.get('email')!.invalid" class="error">
+            <small>Email is required and must be valid.</small>
+          </div>
+        </div>
+    </div>
+    
+        <button type="submit" class="btn" [disabled]="submitted && patientForm.invalid">Book Appointment</button>
+      </form>
+</div>
+
+  
